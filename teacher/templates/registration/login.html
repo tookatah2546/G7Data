@@ -7,6 +7,7 @@
 </head>
 <body>
     <form action="{% url 'login' %}" method="post">
+        <h1>TEACHER</h1>
         {% csrf_token %}
         {{ form.as_p }}
         <p>
