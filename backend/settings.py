@@ -106,6 +106,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 CORS_ORIGIN_WHITELIST = [
@@ -194,5 +195,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # auth
 
-# LOGIN_REDIRECT_URL = "home"
-# LOGOUT_REDIRECT_URL = "login"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "login"

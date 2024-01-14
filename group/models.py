@@ -14,7 +14,7 @@ class group (models.Model):
 class teacher (models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
-    #group = models.ForeignKey(group, on_delete=models.CASCADE)
+    # group = models.ForeignKey(group, on_delete=models.CASCADE)
     
     def __str__(self):
         return str(self.username)

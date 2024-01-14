@@ -8,7 +8,18 @@
 <body>
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.non_field_errors }}
+        <div class="form-field">
+            <label for='{{ form.student_id.label_tag }}'>รหัสนิสิต</label>
+            {{ form.student_id }}
+            {{ form.student_id.errors }}
+        </div>
+        <div class="form-field">
+            <label for='{{ form.student_id.label_tag }}'>รหัสนิสิต</label>
+            {{ form.student_id }}
+            {{ form.student_id.errors }}
+        </div>
+  
         <p>
             <button type="submit">สมัคร</button>
         </p>

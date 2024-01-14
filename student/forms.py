@@ -4,9 +4,10 @@ from django import forms
 from group.models import group
 
 
-class RegisterForm(forms.Form):
-    รหัสนิสิต = forms.CharField()
-    ชื่อจริง = forms.CharField()
-    นามสกุล = forms.CharField()
-    กลุ่ม = forms.ModelChoiceField(queryset=group.objects.all())
+class RegisterForm(UserCreationForm):
+    # class Meta(UserCreationForm.Meta):
+        รหัสนิสิต = forms.CharField()
+        ชื่อจริง = forms.CharField()
+        นามสกุล = forms.CharField()
+        กลุ่ม = forms.ModelChoiceField(queryset=group.objects.all())
     
