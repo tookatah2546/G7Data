@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'group.apps.GroupConfig',
     'teacher.apps.TeacherConfig',
     'student.apps.StudentConfig',
+    'daily_scrum.apps.DailyScrumConfig',
 
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -6,6 +7,7 @@ from django.db import models
 class group (models.Model):
     group_id = models.CharField(max_length=50)
     subject_name = models.CharField(default='project',max_length=50)
+    members = models.ManyToManyField(User)
     
 
     def __str__(self):

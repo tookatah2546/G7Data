@@ -23,5 +23,7 @@ urlpatterns = [
     path('api/', include('base.api.urls')),
     path('teacher/', include('teacher.urls')),
     path('student/', include('student.urls')),
-    path('home/', include('index.urls'))
+    path('home/', include('index.urls')),
+    path('group/', include('group.urls')),
+    path('daily_scrum/', include('daily_scrum.urls')),
 ]
