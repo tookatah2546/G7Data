@@ -41,13 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'base.apps.BaseConfig',
-    'index.apps.IndexConfig',
-    'group.apps.GroupConfig',
-    'teacher.apps.TeacherConfig',
-    'student.apps.StudentConfig',
-    'daily_scrum.apps.DailyScrumConfig',
-
+    
+     'follow.apps.FollowConfig',
+   
+    
+    
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
