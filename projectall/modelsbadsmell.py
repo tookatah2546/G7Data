@@ -13,6 +13,8 @@ class AppUser(AbstractUser) :
           choices=AppRole.choices,
      )
      id_student = models.CharField(max_length=8,default='')
+     first_name = models.CharField(max_length=255, default='')
+     last_name =  models.CharField(max_length=255, default='')
      
 class Subject(models.Model):
      teacher = models.ForeignKey(AppUser, on_delete=models.SET_NULL, null=True,blank=True)
