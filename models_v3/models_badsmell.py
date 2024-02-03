@@ -1,0 +1,66 @@
+import datetime
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _ 
+
+
+class AppRole(models.TextChoices) :
+     STUDENT = "STD", _("Student")
+     TEACHER = "TCH", _("Teacher")
+     
+class AppUser(AbstractUser) :
+     role = models.CharField(
+          max_length=255,
+          choices=AppRole.choices,
+     )
+     id_student = models.CharField(max_length=8,default='')
+     first_name = models.CharField(max_length=255, default='')
+     last_name =  models.CharField(max_length=255, default='')
+
+class Subject(models.Model):
+     teacher = models.ForeignKey(AppUser, on_delete=models.SET_NULL, null=True,blank=True)
+     subject_name = models.CharField(max_length=255, default='')
+     amount = models.PositiveBigIntegerField(default=0)
+ 
+ 
+
+#   Bad smell --x  Extract class  x--   
+class Project(models.Model) :
+     subject = models.ForeignKey(Subject , on_delete=models.SET_NULL, null=True,blank=True)
+     users = models.ManyToManyField(AppUser)
+     project_name = models.CharField(max_length=255, default='')
+     trello_link = models.URLField(null=True,blank=True)
+     figma_link = models.URLField(null=True,blank=True)
+     
+class Student(models.Model):
+     student =  models.ForeignKey(AppUser, on_delete=models.SET_NULL, null=True,blank=True)
+     group = models.ForeignKey(Subject , on_delete=models.SET_NULL, null=True,blank=True)
+
+
+
+#   Bad smell --x  Extract class  x--
+#   Bad smell --x  Remove commented-out Code  x--
+#   Bad smell --x  Naming Convention  x--
+class ProductBacklogs(models.Model):
+     product = models.ForeignKey(Project , on_delete=models.SET_NULL, null=True,blank=True)
+     date_todo = models.DateField(default=datetime.date.today)
+     STATUS_CHOICES = (
+        ('todo', 'To Do'),
+        ('doing', 'Doing'),
+        ('done', 'Done'),
+     )
+     status = models.CharField(max_length=5, choices=STATUS_CHOICES, default='todo')
+     date_done = models.DateField(default=datetime.date.today)
+     IM_CHOICES = (
+        ('low', 'ต่ำ'),
+        ('mid', 'ปานกลาง'),
+        ('hight', 'มาก'),
+     )
+     important = models.CharField(max_length=5, choices=IM_CHOICES, default='low')
+     
+class  DailyScrum(models.Model) :
+     student =  models.ForeignKey(AppUser, on_delete=models.SET_NULL, null=True,blank=True)
+     date = models.DateField(auto_now_add = True)
+     yesterday = models.CharField(max_length=1000)
+     today = models.CharField(max_length=1000)
+     problem = models.CharField(max_length=1000)
